@@ -1,6 +1,8 @@
 # PM Slider - Carrusel de Imágenes con Jetpack Compose
 * Rama main: versión obsoleta de código que usa las librerias de google accompanist, las cuales estan obsoletas.
 * Rama updated: versión más reciente de código, que usa las librerias propias de Android.
+* Rama animation: versión update y además incluye una pequeña animación en el icono que marca que fotografía es la actual. Se ve más grande y en todo azul
+
 Este proyecto es una aplicación de Android sencilla desarrollada con **Jetpack Compose** para demostrar cómo implementar un carrusel de imágenes interactivo (`HorizontalPager`). La aplicación muestra una serie de imágenes en un deslizador horizontal con indicadores de página que se actualizan en tiempo real.
 
 ## Funcionalidades

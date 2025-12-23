@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -101,13 +104,27 @@ fun ImageCarousel(dogImageIdList: List<Int>) {
             horizontalArrangement = Arrangement.Center
         ) {
             repeat(pagerState.pageCount) { iteration ->
-                val color = if (pagerState.currentPage == iteration) androidx.compose.material3.MaterialTheme.colorScheme.primary else androidx.compose.material3.MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                val isSelected = pagerState.currentPage == iteration
+
+                val size by animateDpAsState(
+                    targetValue = if (isSelected) 26.dp else 12.dp,
+                    label = "indicatorSize"
+                )
+
+                val color by animateColorAsState(
+                    targetValue = if (isSelected)
+                        MaterialTheme.colorScheme.primary
+                    else
+                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
+                    label = "indicatorColor"
+                )
+
                 Box(
                     modifier = Modifier
                         .padding(4.dp)
                         .clip(CircleShape)
-                        .size(12.dp)
-                        .background(color) // Añadimos el fondo para que el color sea visible
+                        .size(size)
+                        .background(color)
                 )
             }
         }
