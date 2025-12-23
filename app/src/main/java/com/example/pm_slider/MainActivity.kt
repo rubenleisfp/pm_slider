@@ -114,3 +114,17 @@ fun ImageCarousel(dogImageIdList: List<Int>) {
     }
 }
 
+
+@Preview(showBackground = true)
+@Composable
+fun ImageCarouselPreview() {
+    Pm_sliderTheme {
+        ImageCarousel(
+            dogImageIdList = listOf(
+                R.drawable.bella,
+                R.drawable.faye,
+                R.drawable.frankie
+            )
+        )
+    }
+}
